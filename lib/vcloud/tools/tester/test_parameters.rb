@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Vcloud
   module Tools
     module Tester

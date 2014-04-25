@@ -1,0 +1,8 @@
+vdc_name: "test-vdc-name"
+catalog: "test-catalog"
+catalog_item: "test-catalog-item"
+network1: "test-network1"
+network1_ip: "test-network1-ip"
+network2: "test-network1"
+network2_ip: "test-network2-ip"
+storage_profile: "test-storage-profile"
