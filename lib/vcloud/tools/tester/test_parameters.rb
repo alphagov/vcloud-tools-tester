@@ -5,7 +5,11 @@ module Vcloud
     module Tester
       class TestParameters
 
-        def load_config config_file
+        def initialize(config_file)
+          load_config(config_file)
+        end
+
+        def load_config(config_file)
           @input_config = YAML::load(File.open(config_file))
         end
 

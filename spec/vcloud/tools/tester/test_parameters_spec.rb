@@ -3,13 +3,22 @@ require 'vcloud/tools/tester'
 module Vcloud::Tools::Tester
   describe TestParameters do
 
-    context "it returns launcher parameters" do
+    context "launcher parameters" do
 
-      it "loads input yaml" do
-        parameters = TestParameters.new
+      before(:all) do
         @data_dir = File.join(File.dirname(__FILE__), "/data")
-        test_config = parameters.load_config("#{@data_dir}/test_config.yaml")
-        expect(test_config.class).to eq(Hash)
+      end
+
+      it "loads input yaml when intialized" do
+        parameters = TestParameters.new("#{@data_dir}/test_launcher_config.yaml")
+        test_vdc = parameters.vdc_name
+        expect(test_vdc).to eq("test-vdc-name")
+      end
+
+      it "input yaml can be changed" do
+        parameters = TestParameters.new("#{@data_dir}/test_minimal_config.yaml")
+        test_vdc = parameters.vdc_name
+        expect(test_vdc).to eq("minimal-vdc-name")
       end
 
     end
