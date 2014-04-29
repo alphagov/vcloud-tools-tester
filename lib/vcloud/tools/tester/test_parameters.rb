@@ -10,7 +10,9 @@ module Vcloud
         end
 
         def load_config(config_file)
-          @input_config = YAML::load(File.open(config_file))
+          organization = ENV['FOG_CREDENTIAL']
+          all_config = YAML::load(File.open(config_file))
+          @input_config = all_config[organization]
         end
 
         def vdc_name
