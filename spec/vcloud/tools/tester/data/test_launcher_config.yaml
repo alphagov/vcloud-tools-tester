@@ -1,4 +1,4 @@
-"test-organisation":
+test-organisation:
   vdc_name: "test-vdc-name"
   catalog: "test-catalog"
   catalog_item: "test-catalog-item"
@@ -8,5 +8,5 @@
   network2_ip: "test-network2-ip"
   storage_profile: "test-storage-profile"
 
-"other-organisation":
+other-organisation:
   vdc_name: "other-vdc-name"
