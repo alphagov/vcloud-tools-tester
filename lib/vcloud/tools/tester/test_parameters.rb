@@ -27,8 +27,8 @@ module Vcloud
           @input_config["catalog"]
         end
 
-        def catalog_item
-          @input_config["catalog_item"]
+        def vapp_template
+          @input_config["vapp_template"]
         end
 
         def network1

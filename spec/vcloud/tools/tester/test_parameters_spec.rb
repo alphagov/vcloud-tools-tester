@@ -48,7 +48,7 @@ module Vcloud::Tools::Tester
         test_catalog = parameters.catalog
         expect(test_catalog).to eq("launcher-catalog")
 
-        test_vapp_template = parameters.catalog_item
+        test_vapp_template = parameters.vapp_template
         expect(test_vapp_template).to eq("launcher-vapp-template")
 
         test_network_1 = parameters.network1

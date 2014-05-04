@@ -1,7 +1,7 @@
 test-organisation:
   vdc_1_name: "test-vdc-name"
   catalog: "test-catalog"
-  catalog_item: "test-catalog-item"
+  vapp_template: "test-catalog-item"
   network1: "test-network1"
   network1_ip: "test-network1-ip"
   network2: "test-network1"
