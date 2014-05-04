@@ -15,11 +15,11 @@ module Vcloud
           @input_config = all_config[organization]
         end
 
-        def vdc_name
+        def vdc_1_name
           @input_config["vdc_name_1"]
         end
 
-        def vdc_name_2
+        def vdc_2_name
           @input_config["vdc_name_2"]
         end
 

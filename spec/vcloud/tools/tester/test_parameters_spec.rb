@@ -13,21 +13,21 @@ module Vcloud::Tools::Tester
       it "loads input yaml when intialized" do
         ENV['FOG_CREDENTIAL'] = 'test-organisation'
         parameters = TestParameters.new("#{@data_dir}/test_config.yaml")
-        test_vdc = parameters.vdc_name
+        test_vdc = parameters.vdc_1_name
         expect(test_vdc).to eq("test-vdc-name")
       end
 
       it "loads a different organization's yaml when env var changes" do
         ENV['FOG_CREDENTIAL'] = 'other-organisation'
         parameters = TestParameters.new("#{@data_dir}/test_config.yaml")
-        test_vdc = parameters.vdc_name
+        test_vdc = parameters.vdc_1_name
         expect(test_vdc).to eq("other-vdc-name")
       end
 
       it "input yaml file can be changed" do
         ENV['FOG_CREDENTIAL'] = 'minimal-organisation'
         parameters = TestParameters.new("#{@data_dir}/test_minimal_config.yaml")
-        test_vdc = parameters.vdc_name
+        test_vdc = parameters.vdc_1_name
         expect(test_vdc).to eq("minimal-vdc-name")
       end
 
@@ -39,10 +39,10 @@ module Vcloud::Tools::Tester
         ENV['FOG_CREDENTIAL'] = "launcher-testing-organisation"
         parameters = TestParameters.new("#{@data_dir}/test_launcher_config.yaml")
 
-        test_vdc_1_name = parameters.vdc_name
+        test_vdc_1_name = parameters.vdc_1_name
         expect(test_vdc_1_name).to eq("launcher-vdc-1-name")
 
-        test_vdc_2_name = parameters.vdc_name_2
+        test_vdc_2_name = parameters.vdc_2_name
         expect(test_vdc_2_name).to eq("launcher-vdc-2-name")
 
         test_catalog = parameters.catalog
