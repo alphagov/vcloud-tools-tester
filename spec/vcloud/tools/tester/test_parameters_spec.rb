@@ -8,18 +8,18 @@ module Vcloud::Tools::Tester
       @data_dir = File.join(File.dirname(__FILE__), "/data")
     end
 
-    context "launcher parameters" do
+    context "loading config file" do
 
       it "loads input yaml when intialized" do
         ENV['FOG_CREDENTIAL'] = 'test-organisation'
-        parameters = TestParameters.new("#{@data_dir}/test_launcher_config.yaml")
+        parameters = TestParameters.new("#{@data_dir}/test_config.yaml")
         test_vdc = parameters.vdc_name
         expect(test_vdc).to eq("test-vdc-name")
       end
 
       it "loads a different organization's yaml when env var changes" do
         ENV['FOG_CREDENTIAL'] = 'other-organisation'
-        parameters = TestParameters.new("#{@data_dir}/test_launcher_config.yaml")
+        parameters = TestParameters.new("#{@data_dir}/test_config.yaml")
         test_vdc = parameters.vdc_name
         expect(test_vdc).to eq("other-vdc-name")
       end
