@@ -1,5 +1,5 @@
 test-organisation:
-  vdc_name_1: "test-vdc-name"
+  vdc_1_name: "test-vdc-name"
   catalog: "test-catalog"
   catalog_item: "test-catalog-item"
   network1: "test-network1"
@@ -9,4 +9,4 @@ test-organisation:
   storage_profile: "test-storage-profile"
 
 other-organisation:
-  vdc_name_1: "other-vdc-name"
+  vdc_1_name: "other-vdc-name"

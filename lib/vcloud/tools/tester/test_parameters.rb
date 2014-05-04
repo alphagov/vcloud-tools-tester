@@ -16,11 +16,11 @@ module Vcloud
         end
 
         def vdc_1_name
-          @input_config["vdc_name_1"]
+          @input_config["vdc_1_name"]
         end
 
         def vdc_2_name
-          @input_config["vdc_name_2"]
+          @input_config["vdc_2_name"]
         end
 
         def catalog

@@ -1,6 +1,6 @@
 launcher-testing-organisation:
-  vdc_name_1: "launcher-vdc-1-name"
-  vdc_name_2: "launcher-vdc-2-name"
+  vdc_1_name: "launcher-vdc-1-name"
+  vdc_2_name: "launcher-vdc-2-name"
   catalog: "launcher-catalog"
   catalog_item: "launcher-vapp-template"
   network1: "launcher-network-1"
