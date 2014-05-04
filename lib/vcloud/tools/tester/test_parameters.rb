@@ -16,7 +16,11 @@ module Vcloud
         end
 
         def vdc_name
-          @input_config["vdc_name"]
+          @input_config["vdc_name_1"]
+        end
+
+        def vdc_name_2
+          @input_config["vdc_name_2"]
         end
 
         def catalog
@@ -45,6 +49,22 @@ module Vcloud
 
         def storage_profile
           @input_config["storage_profile"]
+        end
+
+        def default_storage_profile_name
+          @input_config["default_storage_profile_name"]
+        end
+
+        def default_storage_profile_href
+          @input_config["default_storage_profile_href"]
+        end
+
+        def vdc_1_storage_profile_href
+          @input_config["vdc_1_storage_profile_href"]
+        end
+
+        def vdc_2_storage_profile_href
+          @input_config["vdc_2_storage_profile_href"]
         end
 
       end
