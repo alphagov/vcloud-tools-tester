@@ -1,13 +1,14 @@
 require 'vcloud/tools/tester'
 
 module Vcloud::Tools::Tester
+
   describe TestParameters do
 
-    context "launcher parameters" do
+    before(:all) do
+      @data_dir = File.join(File.dirname(__FILE__), "/data")
+    end
 
-      before(:all) do
-        @data_dir = File.join(File.dirname(__FILE__), "/data")
-      end
+    context "launcher parameters" do
 
       it "loads input yaml when intialized" do
         ENV['FOG_CREDENTIAL'] = 'test-organisation'
@@ -30,10 +31,10 @@ module Vcloud::Tools::Tester
         expect(test_vdc).to eq("minimal-vdc-name")
       end
 
-      after(:each) do
-        ENV.delete('FOG_CREDENTIAL')
-      end
+    end
 
+    after(:each) do
+      ENV.delete('FOG_CREDENTIAL')
     end
 
   end
