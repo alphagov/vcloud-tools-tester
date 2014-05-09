@@ -35,19 +35,19 @@ module Vcloud
         end
 
         def network_1
-          @input_config["network1"]
+          @input_config["network_1"]
         end
 
         def network_1_ip
-          @input_config["network1_ip"]
+          @input_config["network_1_ip"]
         end
 
         def network_2
-          @input_config["network2"]
+          @input_config["network_2"]
         end
 
         def network_2_ip
-          @input_config["network2_ip"]
+          @input_config["network_2_ip"]
         end
 
         def storage_profile

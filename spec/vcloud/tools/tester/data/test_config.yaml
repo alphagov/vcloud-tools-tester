@@ -2,10 +2,10 @@ test-organisation:
   vdc_1_name: "test-vdc-name"
   catalog: "test-catalog"
   vapp_template: "test-catalog-item"
-  network1: "test-network1"
-  network1_ip: "test-network1-ip"
-  network2: "test-network1"
-  network2_ip: "test-network2-ip"
+  network_1: "test-network-1"
+  network_1_ip: "test-network-1-ip"
+  network_2: "test-network-2"
+  network_2_ip: "test-network-2-ip"
   storage_profile: "test-storage-profile"
 
 other-organisation:
