@@ -10,6 +10,9 @@ module Vcloud
         end
 
         def load_config(config_file)
+          unless File.exist?(config_file)
+            raise ArgumentError.new("Missing required file: #{config_file}")
+          end
           organization = ENV['FOG_CREDENTIAL']
           all_config = YAML::load(File.open(config_file))
           @input_config = all_config[organization]

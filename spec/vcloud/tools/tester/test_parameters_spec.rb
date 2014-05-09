@@ -31,6 +31,13 @@ module Vcloud::Tools::Tester
         expect(test_vdc).to eq("minimal-vdc-name")
       end
 
+      it "gives a useful error when there is no config file" do
+        ENV['FOG_CREDENTIAL'] = 'minimal-organisation'
+        expect {
+          TestParameters.new("#{@data_dir}/non_existent_testing_config.yaml")
+        }.to raise_error(ArgumentError, /Missing required file/)
+      end
+
     end
 
     context "parameters required for integration tests" do
