@@ -58,16 +58,16 @@ module Vcloud::Tools::Tester
         test_vapp_template = parameters.vapp_template
         expect(test_vapp_template).to eq("launcher-vapp-template")
 
-        test_network_1 = parameters.network1
+        test_network_1 = parameters.network_1
         expect(test_network_1).to eq("launcher-network-1")
 
-        test_network_1_ip = parameters.network1_ip
+        test_network_1_ip = parameters.network_1_ip
         expect(test_network_1_ip).to eq("launcher-network-1-ip")
 
-        test_network_2 = parameters.network2
+        test_network_2 = parameters.network_2
         expect(test_network_2).to eq("launcher-network-2")
 
-        test_network_2_ip = parameters.network2_ip
+        test_network_2_ip = parameters.network_2_ip
         expect(test_network_2_ip).to eq("launcher-network-2-ip")
 
         test_storage_profile = parameters.storage_profile
