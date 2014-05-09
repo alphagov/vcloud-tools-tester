@@ -18,9 +18,13 @@ Or install it yourself as:
 
     $ gem install vcloud-tools-tester
 
-## Usage
+## Testing
 
-TODO
+Run the default suite of tests (e.g. lint, unit, features):
+
+    bundle exec rake
+
+There are no integration tests for this project.
 
 ## Contributing
 
