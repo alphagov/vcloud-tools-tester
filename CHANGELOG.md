@@ -1,3 +1,9 @@
+## 0.0.3 (2014-05-09)
+
+Bugfixes:
+
+  - Makes input parameter names consistent, e.g. `network_1_ip` rather than `network1_ip`.
+
 ## 0.0.2 (2014-05-09)
 
 Features:
