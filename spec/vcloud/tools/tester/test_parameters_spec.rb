@@ -31,6 +31,13 @@ module Vcloud::Tools::Tester
         expect(test_vdc).to eq("minimal-vdc-name")
       end
 
+      it "gives a useful error when FOG_CREDENTIAL is unset" do
+        stub_const('ENV', {})
+        expect {
+          TestParameters.new("#{@data_dir}/test_minimal_config.yaml")
+        }.to raise_error(ArgumentError, /Must set FOG_CREDENTIAL envvar/)
+      end
+
       it "gives a useful error when there is no config file" do
         stub_const('ENV', {'FOG_CREDENTIAL' => 'minimal-organisation'})
         expect {
