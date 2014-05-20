@@ -70,6 +70,10 @@ module Vcloud
           @input_config["vdc_2_storage_profile_href"]
         end
 
+        def edge_gateway
+          @input_config["edge_gateway"]
+        end
+
       end
     end
   end
