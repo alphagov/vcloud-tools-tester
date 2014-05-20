@@ -17,7 +17,9 @@ module Vcloud
             raise ArgumentError.new("Must set FOG_CREDENTIAL envvar")
           end
           all_config = YAML::load(File.open(config_file))
-          @input_config = all_config[organization]
+          @input_config = all_config.fetch(organization) do
+            raise ArgumentError.new("Invalid FOG_CREDENTIAL value '#{organization}'")
+          end
         end
 
         def vdc_1_name
