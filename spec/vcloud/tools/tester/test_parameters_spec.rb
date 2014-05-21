@@ -35,14 +35,14 @@ module Vcloud::Tools::Tester
         stub_const('ENV', {})
         expect {
           TestParameters.new("#{@data_dir}/test_minimal_config.yaml")
-        }.to raise_error(ArgumentError, /Must set FOG_CREDENTIAL envvar/)
+        }.to raise_error(RuntimeError, /Must set FOG_CREDENTIAL envvar/)
       end
 
       it "gives a useful error when the FOG_CREDENTIAL is missing from the config" do
         stub_const('ENV', {'FOG_CREDENTIAL' => 'bogus-fog-credential'})
         expect {
           TestParameters.new("#{@data_dir}/test_config.yaml")
-        }.to raise_error(ArgumentError, /Invalid FOG_CREDENTIAL value/)
+        }.to raise_error(RuntimeError, /Invalid FOG_CREDENTIAL value/)
       end
 
       it "gives a useful error when there is no config file" do
