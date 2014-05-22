@@ -1,3 +1,10 @@
+## 0.0.4 (2014-05-20)
+
+Features:
+
+  - add edge_gateway parameter
+  - add provider_network, provider_network_id, provider_network_ip parameters
+
 ## 0.0.3 (2014-05-09)
 
 Bugfixes:

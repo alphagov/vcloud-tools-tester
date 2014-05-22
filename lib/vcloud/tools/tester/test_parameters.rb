@@ -74,6 +74,22 @@ module Vcloud
           @input_config["vdc_2_storage_profile_href"]
         end
 
+        def edge_gateway
+          @input_config["edge_gateway"]
+        end
+
+        def provider_network
+          @input_config["provider_network"]
+        end
+
+        def provider_network_id
+          @input_config["provider_network_id"]
+        end
+
+        def provider_network_ip
+          @input_config["provider_network_ip"]
+        end
+
       end
     end
   end
