@@ -1,9 +1,15 @@
+## 0.0.5 (2014-05-23)
+
+Features:
+
+  - Add network_1_id and network_2_id parameters
+
 ## 0.0.4 (2014-05-20)
 
 Features:
 
-  - add edge_gateway parameter
-  - add provider_network, provider_network_id, provider_network_ip parameters
+  - Add edge_gateway parameter
+  - Add provider_network, provider_network_id, provider_network_ip parameters
 
 ## 0.0.3 (2014-05-09)
 

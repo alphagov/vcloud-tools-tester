@@ -42,12 +42,20 @@ module Vcloud
           @input_config["network_1"]
         end
 
+        def network_1_id
+          @input_config["network_1_id"]
+        end
+
         def network_1_ip
           @input_config["network_1_ip"]
         end
 
         def network_2
           @input_config["network_2"]
+        end
+
+        def network_2_id
+          @input_config["network_2_id"]
         end
 
         def network_2_ip
