@@ -8,8 +8,8 @@ Features:
 
 Features:
 
-  - add edge_gateway parameter
-  - add provider_network, provider_network_id, provider_network_ip parameters
+  - Add edge_gateway parameter
+  - Add provider_network, provider_network_id, provider_network_ip parameters
 
 ## 0.0.3 (2014-05-09)
 
