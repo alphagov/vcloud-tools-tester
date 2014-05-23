@@ -1,3 +1,9 @@
+## 0.0.5 (2014-05-23)
+
+Features:
+
+  - Add network_1_id and network_2_id parameters
+
 ## 0.0.4 (2014-05-20)
 
 Features:
