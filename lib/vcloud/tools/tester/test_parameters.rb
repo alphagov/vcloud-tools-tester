@@ -86,6 +86,10 @@ module Vcloud
           @input_config["edge_gateway"]
         end
 
+        def edge_gateway_id
+          @input_config["edge_gateway_id"]
+        end
+
         def provider_network
           @input_config["provider_network"]
         end
@@ -97,7 +101,6 @@ module Vcloud
         def provider_network_ip
           @input_config["provider_network_ip"]
         end
-
       end
     end
   end

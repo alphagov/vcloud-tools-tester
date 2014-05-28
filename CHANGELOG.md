@@ -1,3 +1,9 @@
+## 0.0.6 (2014-05-28)
+
+Features:
+
+  - Add edge_gateway_id parameter
+
 ## 0.0.5 (2014-05-23)
 
 Features:
