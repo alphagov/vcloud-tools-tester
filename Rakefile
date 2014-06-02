@@ -14,6 +14,6 @@ end
 
 require 'rubocop/rake_task'
 
-Rubocop::RakeTask.new(:rubocop) do |task|
+RuboCop::RakeTask.new(:rubocop) do |task|
   task.options = ['--lint']
 end
