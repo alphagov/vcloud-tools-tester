@@ -4,7 +4,6 @@ module Vcloud
   module Tools
     module Tester
       class TestParameters
-
         def initialize(config_file)
           @config_file = config_file
           load_config(@config_file)
