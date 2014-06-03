@@ -6,7 +6,8 @@ module Vcloud
       class TestParameters
 
         def initialize(config_file)
-          load_config(config_file)
+          @config_file = config_file
+          load_config(@config_file)
         end
 
         def load_config(config_file)
@@ -27,6 +28,10 @@ module Vcloud
           @input_config.each_key do |param|
             self.class.send(:define_method, param) { @input_config[param] }
           end
+        end
+
+        def method_missing (method_name)
+          raise "Method TestParameters##{method_name} not defined. Perhaps you need to add this parameter to '#{@config_file}'."
         end
       end
     end

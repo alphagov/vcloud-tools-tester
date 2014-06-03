@@ -56,13 +56,14 @@ module Vcloud::Tools::Tester
 
     context "parameters required for integration tests" do
 
+      let(:config_file) { "#{@data_dir}/test_launcher_config.yaml" }
       let(:parameters) do
         ENV['FOG_CREDENTIAL'] = "launcher-testing-organisation"
-        TestParameters.new("#{@data_dir}/test_launcher_config.yaml")
+        TestParameters.new(config_file)
       end
 
       it "gives a useful error when the parameter is not set" do
-        expect{parameters.doesnotexist}.to raise_error(NoMethodError)
+        expect{parameters.doesnotexist}.to raise_error("Method TestParameters#doesnotexist not defined. Perhaps you need to add this parameter to '#{config_file}'.")
       end
 
       it "contains all the parameters required for the vCloud Launcher tests" do
