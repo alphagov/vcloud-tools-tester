@@ -13,10 +13,13 @@ module Vcloud
           unless File.exist?(config_file)
             raise ArgumentError.new("Missing required file: #{config_file}")
           end
+
           organization = ENV.fetch('FOG_CREDENTIAL') do
             raise "Must set FOG_CREDENTIAL envvar"
           end
+
           all_config = YAML::load(File.open(config_file))
+
           @input_config = all_config.fetch(organization) do
             raise "Invalid FOG_CREDENTIAL value '#{organization}'"
           end
