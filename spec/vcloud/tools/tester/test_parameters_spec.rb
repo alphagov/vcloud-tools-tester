@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'vcloud/tools/tester'
 
 module Vcloud::Tools::Tester
