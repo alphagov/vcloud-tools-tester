@@ -1,6 +1,6 @@
 # vCloud Tools Tester
 
-The integration tests for [vCloud Tools](https://github.com/alphagov/vcloud-tools) require a lot of parameters that are specific to your environment, and not ones you want to make public. 
+The integration tests for [vCloud Tools](https://github.com/gds-operations/vcloud-tools) require a lot of parameters that are specific to your environment, and not ones you want to make public. 
 
 vCloud tools Tester makes it easy to run the vCloud Tools integration tests using a config file.
 

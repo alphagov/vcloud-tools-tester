@@ -6,7 +6,7 @@ We really welcome contributions.
 
 1. Clone the repo:
 
-        git clone git@github.com:alphagov/vcloud-tools-tester.git
+        git clone git@github.com:gds-operations/vcloud-tools-tester.git
 
 2. Run `bundle` to get the required dependecies
 
@@ -22,7 +22,7 @@ We really welcome contributions.
 
 5. Make sure all the tests pass.
 
-6. Update the [CHANGELOG](https://github.com/alphagov/vcloud-tools-tester/blob/master/CHANGELOG.md)
+6. Update the [CHANGELOG](https://github.com/gds-operations/vcloud-tools-tester/blob/master/CHANGELOG.md)
    with a short description of what the change is. This may be a feature, a bugfix, or an
    API change. If your change is documenation or refactoring, you do not need to add a line
    to the CHANGELOG.
