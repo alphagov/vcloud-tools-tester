@@ -2,8 +2,8 @@ require 'spec_helper'
 require 'vcloud/tools/tester'
 
 describe Vcloud::Tools::Tester::UserParameters do
-  before(:all) do
-    @data_dir = File.join(File.dirname(__FILE__), "/data")
+  let(:data_dir) do
+    File.join(File.dirname(__FILE__), "/data")
   end
 
   context "loading config file" do
