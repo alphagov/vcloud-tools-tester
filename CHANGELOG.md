@@ -1,3 +1,17 @@
+## 0.1.0 (2014-06-23)
+
+Features:
+
+  - Test parameters should now be accessed by calling:
+
+    ```ruby
+    test_params = Vcloud::Tools::Tester::TestSetup.new(config_file, expected_user_params).test_params
+    ```
+  - Vcloud::Tools::Tester::TestSetup now creates network fixtures if not already
+    present in the environment and sets the network ID parameters by quering the API.
+  - Now possible to specify which user-defined parameters should be defined in the
+    YAML-formatted configuration file; passed as an array to TestSetup#initialize.
+
 ## 0.0.6 (2014-05-28)
 
 Features:
