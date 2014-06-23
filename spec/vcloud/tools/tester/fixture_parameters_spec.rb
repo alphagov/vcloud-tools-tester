@@ -27,6 +27,13 @@ describe Vcloud::Tools::Tester::FixtureParameters do
     }
   end
 
+  let(:mock_found_interfaces) do
+    [
+      mock_fixture_network_1,
+      mock_fixture_network_2,
+    ]
+  end
+
   let(:mock_fixture_network_1) do
     double(:network, :id => network_1_id, :name => network_1_name)
   end
@@ -90,13 +97,6 @@ describe Vcloud::Tools::Tester::FixtureParameters do
   end
 
   context "correct fixture networks exist" do
-    let(:mock_found_interfaces) do
-      [
-        mock_fixture_network_1,
-        mock_fixture_network_2,
-      ]
-    end
-
     before(:each) do
       expect(mock_fixture_network_1).to receive(:instance_variable_get).with(:@attributes).and_return(network_config_1)
       expect(mock_fixture_network_2).to receive(:instance_variable_get).with(:@attributes).and_return(network_config_2)
