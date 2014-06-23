@@ -21,13 +21,13 @@ module Vcloud
           end
 
           organization = ENV.fetch('FOG_CREDENTIAL') do
-            raise "Must set FOG_CREDENTIAL envvar"
+            raise "Must set FOG_CREDENTIAL environment variable"
           end
 
           all_config = YAML::load_file(@config_file)
 
           @user_params = all_config.fetch(organization) do
-            raise "Invalid FOG_CREDENTIAL value '#{organization}'"
+            raise "Invalid FOG_CREDENTIAL environment variable value '#{organization}'"
           end
 
           defined_keys = @user_params.keys

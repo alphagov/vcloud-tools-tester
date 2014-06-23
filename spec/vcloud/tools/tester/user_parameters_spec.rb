@@ -33,7 +33,7 @@ describe Vcloud::Tools::Tester::UserParameters do
 
     it "gives a useful error when the FOG_CREDENTIAL is missing from the config" do
       stub_const('ENV', {'FOG_CREDENTIAL' => 'bogus-fog-credential'})
-      expect { parameters }.to raise_error(RuntimeError, /Invalid FOG_CREDENTIAL value/)
+      expect { parameters }.to raise_error(RuntimeError, /Invalid FOG_CREDENTIAL environment variable value/)
     end
   end
 
@@ -58,7 +58,7 @@ describe Vcloud::Tools::Tester::UserParameters do
 
     it "gives a useful error when FOG_CREDENTIAL is unset" do
       stub_const('ENV', {})
-      expect { parameters }.to raise_error(RuntimeError, /Must set FOG_CREDENTIAL envvar/)
+      expect { parameters }.to raise_error(RuntimeError, /Must set FOG_CREDENTIAL environment variable/)
     end
   end
 
