@@ -34,10 +34,10 @@ describe Vcloud::Tools::Tester::UserParameters do
   end
 
   context "when an expected user-defined parameter is missing from the config file" do
-    let(:expected_user_params) { [ "foo", "bar" ] }
+    let(:expected_user_params) { [ "vdc_1_name", "bar" ] }
 
     it "raises an error if an expected user-defined parameter is not present" do
-      expect{ parameters }.to raise_error(RuntimeError, /Required parameters not defined/)
+      expect{ parameters }.to raise_error(RuntimeError, "Required parameters not defined in #{data_dir}/test_config.yaml: bar")
     end
   end
 
