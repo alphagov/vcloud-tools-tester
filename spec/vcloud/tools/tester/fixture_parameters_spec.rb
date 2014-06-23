@@ -7,6 +7,7 @@ describe Vcloud::Tools::Tester::FixtureParameters do
   before(:each) do
     stub_const("Fog::Compute::VcloudDirector::Network", Object)
     Vcloud::Fog::ModelInterface.stub_chain(:new, :current_organization, :networks, :all).and_return(mock_found_interfaces)
+    Vcloud::Fog::ModelInterface.stub_chain(:new, :current_organization, :vdcs, :all).and_return(mock_found_vdcs)
   end
 
   let(:edge_gateway_name) { "Test edge gateway" }
@@ -16,6 +17,8 @@ describe Vcloud::Tools::Tester::FixtureParameters do
   let(:network_2_name) { "Test network 2" }
   let(:network_1_id) { "12345678-1234-1234-1234-000000111111" }
   let(:network_2_id) { "12345678-1234-1234-1234-000000222222" }
+  let(:network_1_href) { "https://example.com/admin/network/" + network_1_id }
+  let(:network_2_href) { "https://example.com/admin/network/" + network_2_id }
 
   let(:user_params) do
     {
@@ -25,6 +28,21 @@ describe Vcloud::Tools::Tester::FixtureParameters do
       "network_1"    =>  network_1_name,
       "network_2"    =>  network_2_name,
     }
+  end
+
+  let(:mock_found_vdcs) do
+    [
+      mock_vdc_1,
+      mock_vdc_2
+    ]
+  end
+
+  let(:mock_vdc_1) do
+      double(:vdc, :name => vdc_1_name, :available_networks => [ { :href => network_1_href } ])
+  end
+
+  let(:mock_vdc_2) do
+      double(:vdc, :name => vdc_2_name, :available_networks => [ { :href => network_2_href } ])
   end
 
   let(:mock_found_interfaces) do
@@ -109,6 +127,20 @@ describe Vcloud::Tools::Tester::FixtureParameters do
 
     it "returns the correct fixture parameters" do
       expect(subject.fixture_params.values).to eq(mock_fixture_uuids)
+    end
+  end
+
+  describe "correct fixture networks exist but aren't available to the appropriate vDCs" do
+    let(:mock_found_vdcs) do
+      [
+        double(:vdc, :name => vdc_1_name, :available_networks => [ { :href => "https://example.com/admin/network/garbage" } ]),
+        mock_vdc_2
+      ]
+    end
+
+    it "raises an error" do
+      expect(mock_fixture_network_1).to receive(:instance_variable_get).with(:@attributes).and_return(network_config_1)
+      expect{ subject }.to raise_error(/already exists but is not configured as expected/)
     end
   end
 
