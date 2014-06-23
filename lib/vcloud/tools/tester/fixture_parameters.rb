@@ -5,6 +5,7 @@ module Vcloud
         attr_reader :fixture_params
 
         def initialize(user_params)
+          @vcloud_api = Vcloud::Fog::ModelInterface.new
           @user_params = user_params
           ensure_vcloud_fixtures
           extract_fixture_params
@@ -68,8 +69,7 @@ module Vcloud
         end
 
         def ensure_networks_correct(expected_network_config)
-          vcloud_api = Vcloud::Fog::ModelInterface.new
-          existing_networks = vcloud_api.current_organization.networks.all(false)
+          existing_networks = @vcloud_api.current_organization.networks.all(false)
 
           correct_networks = []
 
@@ -83,9 +83,7 @@ module Vcloud
               next
             end
 
-            found_network_config = found_network.instance_variable_get(:@attributes)
-
-            unless network_config_matches_expected(found_network_config, expected_config)
+            unless network_matches_expected?(found_network, expected_config)
               raise "Network '#{expected_config[:name]}' already exists but is not configured as expected.
                 You should delete this network before re-running the tests; it will be re-created by the tests."
             end
@@ -114,7 +112,14 @@ module Vcloud
           end
         end
 
-        def network_config_matches_expected(found_network_config, expected_network_config)
+        def network_matches_expected?(found_network, expected_network_config)
+            network_config_matches_expected?(found_network, expected_network_config) &&
+              network_available_to_correct_vdc?(found_network, expected_network_config)
+        end
+
+        def network_config_matches_expected?(found_network, expected_network_config)
+            found_network_config = found_network.instance_variable_get(:@attributes)
+
             expected_network_config = expected_network_config.reject do |key|
               %w{edge_gateway vdc_name}.include?(key.to_s)
             end
@@ -128,6 +133,20 @@ module Vcloud
             expected_network_config = Hash[expected_network_config.sort]
 
             found_network_config == expected_network_config
+        end
+
+        def network_available_to_correct_vdc?(found_network, expected_network_config)
+          vdcs = @vcloud_api.current_organization.vdcs.all(false)
+
+          vdcs.each do |vdc|
+            next unless vdc.name == expected_network_config[:vdc_name]
+
+            matching_network = vdc.available_networks.detect { |n| n[:href].split('/').last == found_network.id }
+
+            return true if matching_network
+          end
+
+          false
         end
       end
     end
