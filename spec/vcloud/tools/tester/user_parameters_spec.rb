@@ -3,7 +3,7 @@ require 'vcloud/tools/tester'
 
 describe Vcloud::Tools::Tester::UserParameters do
   subject(:parameters) do
-    Vcloud::Tools::Tester::UserParameters.new("#{data_dir}/test_config.yaml", expected_user_params).user_params
+    Vcloud::Tools::Tester::UserParameters.new(config_file, expected_user_params).user_params
   end
 
   before(:each) do
@@ -12,6 +12,10 @@ describe Vcloud::Tools::Tester::UserParameters do
 
   let(:data_dir) do
     File.join(File.dirname(__FILE__), "/data")
+  end
+
+  let(:config_file) do
+    "#{data_dir}/test_config.yaml"
   end
 
   let(:expected_user_params) {[]}
@@ -37,7 +41,7 @@ describe Vcloud::Tools::Tester::UserParameters do
     let(:expected_user_params) { [ "vdc_1_name", "bar" ] }
 
     it "raises an error if an expected user-defined parameter is not present" do
-      expect{ parameters }.to raise_error(RuntimeError, "Required parameters not defined in #{data_dir}/test_config.yaml: bar")
+      expect{ parameters }.to raise_error(RuntimeError, "Required parameters not defined in #{config_file}: bar")
     end
   end
 
