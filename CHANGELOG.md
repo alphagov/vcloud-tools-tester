@@ -1,3 +1,7 @@
+## 0.1.2 (2014-07-14)
+
+Make dependency on vCloud Core less restrictive; allow any version in the 0.x series.
+
 ## 0.1.1 (2014-07-14)
 
 Update dependency on vCloud Core to version 0.6.0.
