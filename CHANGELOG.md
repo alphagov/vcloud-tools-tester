@@ -1,3 +1,14 @@
+## 0.1.3 (2014-07-15)
+
+Bugfixes:
+
+  - Fixes issue where, when integration tests are run and networks need to
+    be created (which happens when one or more networks do not match the
+    values expected by the Gem), a network may be created as a different
+    class. In this case, we could not previously read parameters from a
+    network which was created as we assumed all networks were of the same
+    class.
+
 ## 0.1.2 (2014-07-14)
 
 Make dependency on vCloud Core less restrictive; allow any version in the 0.x series.
