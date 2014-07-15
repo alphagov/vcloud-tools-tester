@@ -1,3 +1,10 @@
+## 0.1.3 (2014-07-15)
+
+Bugfixes:
+
+  - Fixes issue where we were not receiving parameters correctly in cases
+    where networks did not already exist.
+
 ## 0.1.2 (2014-07-14)
 
 Make dependency on vCloud Core less restrictive; allow any version in the 0.x series.
