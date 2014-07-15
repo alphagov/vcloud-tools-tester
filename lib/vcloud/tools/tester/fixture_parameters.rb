@@ -102,7 +102,7 @@ module Vcloud
 
           @fixtures.each do |fixture|
             case fixture
-            when ::Fog::Compute::VcloudDirector::Network
+            when ::Fog::Compute::VcloudDirector::Network, Vcloud::Core::OrgVdcNetwork
               expected_networks.each do |network_ref, expected_network_config|
                 if expected_network_config[:name] == fixture.name
                   @fixture_params["#{network_ref}_id"] = fixture.id
