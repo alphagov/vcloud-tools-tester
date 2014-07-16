@@ -1,6 +1,6 @@
 ---
 before_script: bundle env
-bundler_args: --jobs=1 --verbose
+bundler_args: --jobs=1 --verbose --without ''
 language: ruby
 rvm:
   - 1.9.3
