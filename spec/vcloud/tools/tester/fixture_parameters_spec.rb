@@ -6,8 +6,8 @@ describe Vcloud::Tools::Tester::FixtureParameters do
 
   before(:each) do
     stub_const("Fog::Compute::VcloudDirector::Network", Object)
-    Vcloud::Fog::ModelInterface.stub_chain(:new, :current_organization, :networks, :all).and_return(mock_found_interfaces)
-    Vcloud::Fog::ModelInterface.stub_chain(:new, :current_organization, :vdcs, :all).and_return(mock_found_vdcs)
+    Vcloud::Core::Fog::ModelInterface.stub_chain(:new, :current_organization, :networks, :all).and_return(mock_found_interfaces)
+    Vcloud::Core::Fog::ModelInterface.stub_chain(:new, :current_organization, :vdcs, :all).and_return(mock_found_vdcs)
   end
 
   let(:edge_gateway_name) { "Test edge gateway" }
