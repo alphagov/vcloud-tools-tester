@@ -1,5 +1,4 @@
 require "vcloud/core"
-require "vcloud/fog"
 
 require "vcloud/tools/tester/version"
 require "vcloud/tools/tester/fixture_parameters"
