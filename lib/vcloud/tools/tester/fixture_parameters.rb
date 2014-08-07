@@ -5,7 +5,7 @@ module Vcloud
         attr_reader :fixture_params
 
         def initialize(user_params)
-          @vcloud_api = Vcloud::Core::Fog::ModelInterface.new
+          @vcloud_api = Vcloud::Core::ApiInterface.new
           @user_params = user_params
           ensure_vcloud_fixtures
           extract_fixture_params
