@@ -1,3 +1,9 @@
+## 0.2.0 (2014-08-11)
+
+API changes:
+
+  - Now depends on vCloud Core v0.9, using an API to access fog instead of accessing fog directly.
+
 ## 0.1.3 (2014-07-15)
 
 Bugfixes:
