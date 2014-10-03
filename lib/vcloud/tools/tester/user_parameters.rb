@@ -27,7 +27,7 @@ module Vcloud
           all_config = YAML::load_file(@config_file)
 
           @user_params = all_config.fetch(organization) do
-            raise "Invalid FOG_CREDENTIAL environment variable value '#{organization}'"
+            raise "No matching organisation was found in #{@config_file} for FOG_CREDENTIAL value '#{organization}'"
           end
 
           defined_keys = @user_params.keys
