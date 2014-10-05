@@ -20,52 +20,12 @@ module Vcloud
         end
 
         def generate_fixtures_config
-          @expected_fixtures_config = {
-            :networks => {
-              :network_1 => {
-                :edge_gateway => @user_params["edge_gateway"],
-                :vdc_name     => @user_params["vdc_1_name"],
-                :name         => @user_params["network_1"],
-                :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
-                :description  => '',
-                :is_inherited => 'false',
-                :is_shared    => 'true',
-                :fence_mode   => 'natRouted',
-                :gateway      => '192.168.1.1',
-                :netmask      => '255.255.255.0',
-                :dns1         => nil,
-                :dns2         => nil,
-                :dns_suffix   => nil,
-                :ip_ranges    => [
-                  {
-                    :start_address  => "192.168.1.2",
-                    :end_address    => "192.168.1.254"
-                  }
-                ],
-              },
-              :network_2 => {
-                :edge_gateway => @user_params["edge_gateway"],
-                :vdc_name     => @user_params["vdc_2_name"],
-                :name         => @user_params["network_2"],
-                :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
-                :description  => '',
-                :is_inherited => 'false',
-                :is_shared    => 'true',
-                :fence_mode   => 'isolated',
-                :gateway      => '10.0.0.1',
-                :netmask      => '255.255.0.0',
-                :dns1         => nil,
-                :dns2         => nil,
-                :dns_suffix   => nil,
-                :ip_ranges    => [
-                  {
-                    :start_address  => "10.0.0.2",
-                    :end_address    => "10.0.255.254"
-                  }
-                ],
-              },
-            },
+          expected_fixtures_config = {
+            :networks => {},
           }
+          expected_fixtures_config[:networks][:network_1] = expected_network_1_config
+          expected_fixtures_config[:networks][:network_2] = expected_network_2_config
+          @expected_fixtures_config = expected_fixtures_config
         end
 
         def ensure_networks_correct(expected_network_config)
@@ -147,6 +107,55 @@ module Vcloud
 
           false
         end
+
+        def expected_network_1_config
+          {
+            :edge_gateway => @user_params["edge_gateway"],
+            :vdc_name     => @user_params["vdc_1_name"],
+            :name         => @user_params["network_1"],
+            :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
+            :description  => '',
+            :is_inherited => 'false',
+            :is_shared    => 'true',
+            :fence_mode   => 'natRouted',
+            :gateway      => '192.168.1.1',
+            :netmask      => '255.255.255.0',
+            :dns1         => nil,
+            :dns2         => nil,
+            :dns_suffix   => nil,
+            :ip_ranges    => [
+              {
+                :start_address  => "192.168.1.2",
+                :end_address    => "192.168.1.254"
+              }
+            ],
+          }
+        end
+
+        def expected_network_2_config
+          {
+            :edge_gateway => @user_params["edge_gateway"],
+            :vdc_name     => @user_params["vdc_2_name"],
+            :name         => @user_params["network_2"],
+            :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
+            :description  => '',
+            :is_inherited => 'false',
+            :is_shared    => 'true',
+            :fence_mode   => 'isolated',
+            :gateway      => '10.0.0.1',
+            :netmask      => '255.255.0.0',
+            :dns1         => nil,
+            :dns2         => nil,
+            :dns_suffix   => nil,
+            :ip_ranges    => [
+              {
+                :start_address  => "10.0.0.2",
+                :end_address    => "10.0.255.254"
+              }
+            ],
+          }
+        end
+
       end
     end
   end
