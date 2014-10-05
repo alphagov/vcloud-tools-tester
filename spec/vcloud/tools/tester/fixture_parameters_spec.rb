@@ -168,4 +168,23 @@ describe Vcloud::Tools::Tester::FixtureParameters do
       expect(subject.fixture_params.values).to eq(mock_fixture_uuids)
     end
   end
+
+  context "when none of the network fixtures are needed" do
+
+    let(:networkless_expected_user_params) {
+      [
+        "edge_gateway",
+        "vdc_1_name",
+        "vdc_2_name",
+      ]
+    }
+
+    subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params, networkless_expected_user_params) }
+
+    it "returns an empty fixture_params hash" do
+      expect(subject.fixture_params).to eq({})
+    end
+
+  end
+
 end

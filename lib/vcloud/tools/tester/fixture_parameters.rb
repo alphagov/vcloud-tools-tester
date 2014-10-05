@@ -58,7 +58,6 @@ module Vcloud
         end
 
         def extract_fixture_params
-          raise "No fixtures present" if @fixtures.empty?
 
           @fixture_params = {}
 
