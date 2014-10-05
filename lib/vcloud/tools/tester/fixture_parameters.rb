@@ -15,9 +15,7 @@ module Vcloud
         private
 
         def ensure_vcloud_fixtures
-          generate_fixtures_config
-          correct_networks = ensure_networks_correct(@expected_fixtures_config[:networks])
-          @fixtures = correct_networks
+          @fixtures = ensure_networks_correct(generate_fixtures_config[:networks])
         end
 
         def generate_fixtures_config
@@ -67,7 +65,7 @@ module Vcloud
           @fixtures.each do |fixture|
             case fixture
             when ::Fog::Compute::VcloudDirector::Network, Vcloud::Core::OrgVdcNetwork
-              @expected_fixtures_config[:networks].each do |network_ref, expected_network_config|
+              generate_fixtures_config[:networks].each do |network_ref, expected_network_config|
                 if expected_network_config[:name] == fixture.name
                   @fixture_params["#{network_ref}_id"] = fixture.id
                 end
