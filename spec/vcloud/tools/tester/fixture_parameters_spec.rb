@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'vcloud/tools/tester'
 
 describe Vcloud::Tools::Tester::FixtureParameters do
-  subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params) }
+  subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params, expected_user_params) }
 
   before(:each) do
     stub_const("Fog::Compute::VcloudDirector::Network", Object)
@@ -28,6 +28,16 @@ describe Vcloud::Tools::Tester::FixtureParameters do
       "network_1"    =>  network_1_name,
       "network_2"    =>  network_2_name,
     }
+  end
+
+  let(:expected_user_params) do
+    [
+      "edge_gateway",
+      "vdc_1_name",
+      "vdc_2_name",
+      "network_1",
+      "network_2",
+    ]
   end
 
   let(:mock_found_vdcs) do

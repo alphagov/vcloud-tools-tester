@@ -33,7 +33,7 @@ describe Vcloud::Tools::Tester::TestSetup do
 
   it "calls the appropriate methods" do
     expect(Vcloud::Tools::Tester::UserParameters).to receive(:new).with(example_filename, expected_user_params)
-    expect(Vcloud::Tools::Tester::FixtureParameters).to receive(:new).with({})
+    expect(Vcloud::Tools::Tester::FixtureParameters).to receive(:new).with({}, expected_user_params)
     expect(Vcloud::Tools::Tester::TestParameters).to receive(:new).with({}, {})
 
     subject.test_params

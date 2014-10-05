@@ -4,9 +4,10 @@ module Vcloud
       class FixtureParameters
         attr_reader :fixture_params
 
-        def initialize(user_params)
+        def initialize(user_params, expected_user_params)
           @vcloud_api = Vcloud::Core::ApiInterface.new
           @user_params = user_params
+          @expected_user_params = expected_user_params
           ensure_vcloud_fixtures
           extract_fixture_params
         end
@@ -23,8 +24,12 @@ module Vcloud
           expected_fixtures_config = {
             :networks => {},
           }
-          expected_fixtures_config[:networks][:network_1] = expected_network_1_config
-          expected_fixtures_config[:networks][:network_2] = expected_network_2_config
+          if @expected_user_params.include?("network_1")
+            expected_fixtures_config[:networks][:network_1] = expected_network_1_config
+          end
+          if @expected_user_params.include?("network_2")
+            expected_fixtures_config[:networks][:network_2] = expected_network_2_config
+          end
           @expected_fixtures_config = expected_fixtures_config
         end
 
