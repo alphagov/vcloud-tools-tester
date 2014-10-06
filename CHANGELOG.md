@@ -1,3 +1,12 @@
+## 0.3.0 (2014-10-06)
+
+Features:
+
+  - Fixture creation (specifically networks at present) is now optional, based on
+    whether the 'network_1' or 'network_2' keys are required. Prevents unneccessary
+    pre-requisites for integration tests that do not require these fixtures, and should
+    be automatically enabled.
+
 ## 0.2.0 (2014-08-11)
 
 API changes:
