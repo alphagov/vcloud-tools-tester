@@ -28,7 +28,7 @@ module Vcloud
           if @expected_user_params.include?("network_2")
             expected_fixtures_config[:networks][:network_2] = expected_network_2_config
           end
-          @expected_fixtures_config = expected_fixtures_config
+          expected_fixtures_config
         end
 
         def ensure_networks_correct(expected_network_config)
