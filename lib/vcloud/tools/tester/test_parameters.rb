@@ -6,7 +6,6 @@ module Vcloud
       class TestParameters
         def initialize(user_params, fixture_params)
           raise "No user parameters received" if user_params.empty?
-          raise "No fixture parameters received" if fixture_params.empty?
 
           @user_params = user_params
           @fixture_params = fixture_params

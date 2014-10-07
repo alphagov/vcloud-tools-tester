@@ -6,9 +6,9 @@ module Vcloud
       class UserParameters
         attr_reader :user_params
 
-        def initialize(config_file, expected_user_params)
+        def initialize(config_file, expected_params)
           @config_file = config_file
-          @expected_user_params = expected_user_params || []
+          @expected_params = expected_params || []
 
           parse_config
         end
@@ -31,7 +31,7 @@ module Vcloud
           end
 
           defined_keys = @user_params.keys
-          missing_params = @expected_user_params - defined_keys
+          missing_params = @expected_params - defined_keys
           if missing_params.any?
             raise "Required parameters not defined in #{@config_file}: " + missing_params.join(", ")
           end

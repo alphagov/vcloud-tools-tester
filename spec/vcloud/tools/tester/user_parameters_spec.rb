@@ -3,7 +3,7 @@ require 'vcloud/tools/tester'
 
 describe Vcloud::Tools::Tester::UserParameters do
   subject(:parameters) do
-    Vcloud::Tools::Tester::UserParameters.new(config_file, expected_user_params).user_params
+    Vcloud::Tools::Tester::UserParameters.new(config_file, expected_params).user_params
   end
 
   before(:each) do
@@ -18,7 +18,7 @@ describe Vcloud::Tools::Tester::UserParameters do
     "#{data_dir}/test_config.yaml"
   end
 
-  let(:expected_user_params) {[]}
+  let(:expected_params) {[]}
   context "loading standard config file" do
     it "loads input yaml when intialized" do
       test_vdc = parameters["vdc_1_name"]
@@ -38,7 +38,7 @@ describe Vcloud::Tools::Tester::UserParameters do
   end
 
   context "when an expected user-defined parameter is missing from the config file" do
-    let(:expected_user_params) { [ "vdc_1_name", "bar" ] }
+    let(:expected_params) { [ "vdc_1_name", "bar" ] }
 
     it "raises an error if an expected user-defined parameter is not present" do
       expect{ parameters }.to raise_error(RuntimeError, "Required parameters not defined in #{config_file}: bar")
@@ -47,7 +47,7 @@ describe Vcloud::Tools::Tester::UserParameters do
 
   context "loading minimal config file" do
     subject(:parameters) do
-      Vcloud::Tools::Tester::UserParameters.new("#{data_dir}/test_minimal_config.yaml", expected_user_params).user_params
+      Vcloud::Tools::Tester::UserParameters.new("#{data_dir}/test_minimal_config.yaml", expected_params).user_params
     end
 
     it "input yaml file can be changed" do
@@ -64,7 +64,7 @@ describe Vcloud::Tools::Tester::UserParameters do
 
   context "loading non-existent config file" do
     subject(:parameters) do
-      Vcloud::Tools::Tester::UserParameters.new("#{data_dir}/nonexistent_config_file.yaml", expected_user_params).user_params
+      Vcloud::Tools::Tester::UserParameters.new("#{data_dir}/nonexistent_config_file.yaml", expected_params).user_params
     end
 
     it "gives a useful error when there is no config file" do

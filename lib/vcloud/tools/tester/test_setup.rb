@@ -6,9 +6,9 @@ module Vcloud
       class TestSetup
         attr_reader :test_params
 
-        def initialize(config_file, expected_user_params)
-          user_params = Vcloud::Tools::Tester::UserParameters.new(config_file, expected_user_params).user_params
-          fixture_params = Vcloud::Tools::Tester::FixtureParameters.new(user_params).fixture_params
+        def initialize(config_file, expected_params)
+          user_params = Vcloud::Tools::Tester::UserParameters.new(config_file, expected_params).user_params
+          fixture_params = Vcloud::Tools::Tester::FixtureParameters.new(user_params, expected_params).fixture_params
 
           @test_params = Vcloud::Tools::Tester::TestParameters.new(user_params, fixture_params)
         end

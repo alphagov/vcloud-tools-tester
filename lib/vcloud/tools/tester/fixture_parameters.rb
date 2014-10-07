@@ -4,9 +4,10 @@ module Vcloud
       class FixtureParameters
         attr_reader :fixture_params
 
-        def initialize(user_params)
+        def initialize(user_params, expected_params)
           @vcloud_api = Vcloud::Core::ApiInterface.new
           @user_params = user_params
+          @expected_params = expected_params
           ensure_vcloud_fixtures
           extract_fixture_params
         end
@@ -14,58 +15,20 @@ module Vcloud
         private
 
         def ensure_vcloud_fixtures
-          generate_fixtures_config
-          correct_networks = ensure_networks_correct(@expected_fixtures_config[:networks])
-          @fixtures = correct_networks
+          @fixtures = ensure_networks_correct(generate_fixtures_config[:networks])
         end
 
         def generate_fixtures_config
-          @expected_fixtures_config = {
-            :networks => {
-              :network_1 => {
-                :edge_gateway => @user_params["edge_gateway"],
-                :vdc_name     => @user_params["vdc_1_name"],
-                :name         => @user_params["network_1"],
-                :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
-                :description  => '',
-                :is_inherited => 'false',
-                :is_shared    => 'true',
-                :fence_mode   => 'natRouted',
-                :gateway      => '192.168.1.1',
-                :netmask      => '255.255.255.0',
-                :dns1         => nil,
-                :dns2         => nil,
-                :dns_suffix   => nil,
-                :ip_ranges    => [
-                  {
-                    :start_address  => "192.168.1.2",
-                    :end_address    => "192.168.1.254"
-                  }
-                ],
-              },
-              :network_2 => {
-                :edge_gateway => @user_params["edge_gateway"],
-                :vdc_name     => @user_params["vdc_2_name"],
-                :name         => @user_params["network_2"],
-                :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
-                :description  => '',
-                :is_inherited => 'false',
-                :is_shared    => 'true',
-                :fence_mode   => 'isolated',
-                :gateway      => '10.0.0.1',
-                :netmask      => '255.255.0.0',
-                :dns1         => nil,
-                :dns2         => nil,
-                :dns_suffix   => nil,
-                :ip_ranges    => [
-                  {
-                    :start_address  => "10.0.0.2",
-                    :end_address    => "10.0.255.254"
-                  }
-                ],
-              },
-            },
+          expected_fixtures_config = {
+            :networks => {},
           }
+          if @expected_params.include?("network_1")
+            expected_fixtures_config[:networks][:network_1] = expected_network_1_config
+          end
+          if @expected_params.include?("network_2")
+            expected_fixtures_config[:networks][:network_2] = expected_network_2_config
+          end
+          expected_fixtures_config
         end
 
         def ensure_networks_correct(expected_network_config)
@@ -95,14 +58,13 @@ module Vcloud
         end
 
         def extract_fixture_params
-          raise "No fixtures present" if @fixtures.empty?
 
           @fixture_params = {}
 
           @fixtures.each do |fixture|
             case fixture
             when ::Fog::Compute::VcloudDirector::Network, Vcloud::Core::OrgVdcNetwork
-              @expected_fixtures_config[:networks].each do |network_ref, expected_network_config|
+              generate_fixtures_config[:networks].each do |network_ref, expected_network_config|
                 if expected_network_config[:name] == fixture.name
                   @fixture_params["#{network_ref}_id"] = fixture.id
                 end
@@ -147,6 +109,55 @@ module Vcloud
 
           false
         end
+
+        def expected_network_1_config
+          {
+            :edge_gateway => @user_params["edge_gateway"],
+            :vdc_name     => @user_params["vdc_1_name"],
+            :name         => @user_params["network_1"],
+            :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
+            :description  => '',
+            :is_inherited => 'false',
+            :is_shared    => 'true',
+            :fence_mode   => 'natRouted',
+            :gateway      => '192.168.1.1',
+            :netmask      => '255.255.255.0',
+            :dns1         => nil,
+            :dns2         => nil,
+            :dns_suffix   => nil,
+            :ip_ranges    => [
+              {
+                :start_address  => "192.168.1.2",
+                :end_address    => "192.168.1.254"
+              }
+            ],
+          }
+        end
+
+        def expected_network_2_config
+          {
+            :edge_gateway => @user_params["edge_gateway"],
+            :vdc_name     => @user_params["vdc_2_name"],
+            :name         => @user_params["network_2"],
+            :type         => 'application/vnd.vmware.vcloud.orgVdcNetwork+xml',
+            :description  => '',
+            :is_inherited => 'false',
+            :is_shared    => 'true',
+            :fence_mode   => 'isolated',
+            :gateway      => '10.0.0.1',
+            :netmask      => '255.255.0.0',
+            :dns1         => nil,
+            :dns2         => nil,
+            :dns_suffix   => nil,
+            :ip_ranges    => [
+              {
+                :start_address  => "10.0.0.2",
+                :end_address    => "10.0.255.254"
+              }
+            ],
+          }
+        end
+
       end
     end
   end

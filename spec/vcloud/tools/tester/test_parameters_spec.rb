@@ -47,12 +47,5 @@ describe Vcloud::Tools::Tester::TestParameters do
         expect{ parameters }.to raise_error("No user parameters received")
       end
     end
-
-    context "no fixture parameters passed in" do
-      let(:fixture_params) {{}}
-      it "raises an error if it receives no fixture parameters" do
-        expect{ parameters }.to raise_error("No fixture parameters received")
-      end
-    end
   end
 end
