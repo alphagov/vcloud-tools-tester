@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'vcloud/tools/tester'
 
 describe Vcloud::Tools::Tester::FixtureParameters do
-  subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params, expected_user_params) }
+  subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params, expected_params) }
 
   before(:each) do
     stub_const("Fog::Compute::VcloudDirector::Network", Object)
@@ -30,7 +30,7 @@ describe Vcloud::Tools::Tester::FixtureParameters do
     }
   end
 
-  let(:expected_user_params) do
+  let(:expected_params) do
     [
       "edge_gateway",
       "vdc_1_name",
@@ -171,7 +171,7 @@ describe Vcloud::Tools::Tester::FixtureParameters do
 
   context "when none of the network fixtures are needed" do
 
-    let(:networkless_expected_user_params) {
+    let(:networkless_expected_params) {
       [
         "edge_gateway",
         "vdc_1_name",
@@ -179,7 +179,7 @@ describe Vcloud::Tools::Tester::FixtureParameters do
       ]
     }
 
-    subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params, networkless_expected_user_params) }
+    subject { Vcloud::Tools::Tester::FixtureParameters.new(user_params, networkless_expected_params) }
 
     it "returns an empty fixture_params hash" do
       expect(subject.fixture_params).to eq({})

@@ -9,7 +9,7 @@ describe Vcloud::Tools::Tester::TestSetup do
   end
 
   let(:example_filename) { "example_filename.yaml" }
-  let(:expected_user_params) { [] }
+  let(:expected_params) { [] }
 
   let(:mock_user_parameters) do
     double(:user_parameters, :user_params => {})
@@ -24,7 +24,7 @@ describe Vcloud::Tools::Tester::TestSetup do
   end
 
   subject do
-    Vcloud::Tools::Tester::TestSetup.new(example_filename, expected_user_params)
+    Vcloud::Tools::Tester::TestSetup.new(example_filename, expected_params)
   end
 
   it "responds with test parameters" do
@@ -32,8 +32,8 @@ describe Vcloud::Tools::Tester::TestSetup do
   end
 
   it "calls the appropriate methods" do
-    expect(Vcloud::Tools::Tester::UserParameters).to receive(:new).with(example_filename, expected_user_params)
-    expect(Vcloud::Tools::Tester::FixtureParameters).to receive(:new).with({}, expected_user_params)
+    expect(Vcloud::Tools::Tester::UserParameters).to receive(:new).with(example_filename, expected_params)
+    expect(Vcloud::Tools::Tester::FixtureParameters).to receive(:new).with({}, expected_params)
     expect(Vcloud::Tools::Tester::TestParameters).to receive(:new).with({}, {})
 
     subject.test_params
