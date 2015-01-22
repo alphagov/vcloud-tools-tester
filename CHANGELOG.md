@@ -1,6 +1,6 @@
 ## 1.0.0 (2015-01-22)
 
-  - Release 1.0.0 since the public api is now stable.
+  - Release 1.0.0 since the public API is now stable.
   - Depend on at least vCloud core 1.0.0
 
 ## 0.3.1 (2015-01-22)
