@@ -1,3 +1,7 @@
+## 0.3.1 (2015-01-22)
+
+  - Depend on any version of vcloud-core. This is temporary fix so we can release version 1.0.0
+
 ## 0.3.0 (2014-10-06)
 
 Features:
