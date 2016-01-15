@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '>= 1.9.3'
+  spec.required_ruby_version = '>= 2.0.0'
 
   spec.add_development_dependency 'gem_publisher', '1.2.0'
   spec.add_development_dependency 'pry'
@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.23.0'
   spec.add_development_dependency 'simplecov', '~> 0.7.1'
 
-  spec.add_runtime_dependency 'vcloud-core', '~> 1.0'
+  spec.add_runtime_dependency 'fog', '~> 1.36.0'
+  spec.add_runtime_dependency 'vcloud-core'
 end

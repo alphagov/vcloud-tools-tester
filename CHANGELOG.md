@@ -1,3 +1,8 @@
+## 2.0.0 (2016-01-15)
+
+  - Depend on any version of vCloud Core. This is a temporary fix so we can release version 2.0.0
+  - Drop support of Ruby 1.9.3, which is the same as vCloud Core
+
 ## 1.0.0 (2015-01-22)
 
   - Release 1.0.0 since the public API is now stable.
