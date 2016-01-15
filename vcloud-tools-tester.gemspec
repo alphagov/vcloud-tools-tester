@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.23.0'
   spec.add_development_dependency 'simplecov', '~> 0.7.1'
 
+  spec.add_runtime_dependency 'fog', '~> 1.36.0'
   spec.add_runtime_dependency 'vcloud-core'
 end
