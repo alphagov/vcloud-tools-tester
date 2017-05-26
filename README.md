@@ -28,4 +28,4 @@ There are no integration tests for this project.
 
 ## Contributing
 
-Please see [CONTRIBUTING.md].
+Please see [CONTRIBUTING.md](/CONTRIBUTING.md).
