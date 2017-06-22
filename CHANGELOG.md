@@ -1,3 +1,10 @@
+## 2.1.0 (2017-06-22)
+
+  - Upgrade to latest Fog
+  - Drop support for Ruby older than 2.2.2
+  - Add support for Ruby 2.3 and 2.4
+  - Various bugfixes
+
 ## 2.0.0 (2016-01-15)
 
   - Depend on any version of vCloud Core. This is a temporary fix so we can release version 2.0.0
