@@ -1,3 +1,7 @@
+## 2.2.0 (2017-09-29)
+
+ - Upgrade Nokogiri to latest (1.8.1) due to vulnerability in libxml2.
+
 ## 2.1.0 (2017-06-22)
 
   - Upgrade to latest Fog

@@ -30,5 +30,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'fog', '~> 1.40.0'
   spec.add_runtime_dependency 'vcloud-core'
-  spec.add_runtime_dependency 'nokogiri', '~> 1.6.8.1'
+  spec.add_runtime_dependency 'nokogiri', '~> 1.8.1'
 end
